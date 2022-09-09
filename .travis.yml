@@ -2,7 +2,7 @@ language: generic
 sudo: required
 
 services:
-  - Docker
+  - docker
 
 before_install:
   - docker build -t punss21/react-test -f ./client/Dockerfile.dev ./client
@@ -25,12 +25,12 @@ after_success:
   - docker push punss21/multi-worker
 
   deploy:
-    provider: elasticbeanstalk
-    region: ap-south-1
-    app: multidocker
-    env: Multidocker-env-1
-    bucket_name: elasticbeanstalk-ap-south-1-867669335535
-    bucket_path: multidocker
+    provider: "elasticbeanstalk"
+    region: "ap-south-1"
+    app: "multidocker"
+    env: "Multidocker-env-1"
+    bucket_name: "elasticbeanstalk-ap-south-1-867669335535"
+    bucket_path: "multidocker"
     on:
       branch: master
 
