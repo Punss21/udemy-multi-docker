@@ -1,0 +1,23 @@
+language: generic
+sudo: required
+
+services:
+  - Docker
+
+before_install:
+  - docker build -t punss21/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true punss21/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t punss21/multi-client ./client 
+  - docker build -t punss21/multi-nginx ./nginx
+  - docker build -t punss21/multi-server ./server
+  - docker build -t punss21/multi-worker ./worker
+
+deploy:
+  provider:
+  region:
+  app:
+  ver: 
