@@ -24,16 +24,16 @@ after_success:
   - docker push punss21/multi-server
   - docker push punss21/multi-worker
 
-  deploy:
-    provider: "elasticbeanstalk"
-    region: "ap-south-1"
-    app: "multidocker"
-    env: "Multidocker-env-1"
-    bucket_name: "elasticbeanstalk-ap-south-1-867669335535"
-    bucket_path: "multidocker"
-    on:
-      branch: master
+deploy:
+  provider: "elasticbeanstalk"
+  region: "ap-south-1"
+  app: "multidocker"
+  env: "Multidocker-env-1"
+  bucket_name: "elasticbeanstalk-ap-south-1-867669335535"
+  bucket_path: "multidocker"
+  on:
+    branch: master
 
-    access_key_id: $AWS_ACCESS_KEY
-    secret_access_key: $AWS_SECRET_KEY
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
 
