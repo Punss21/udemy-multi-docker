@@ -18,7 +18,7 @@ after_success:
 
   #Login to docker hub to push the images
 
-  - echo "DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push punss21/multi-client
   - docker push punss21/multi-nginx
   - docker push punss21/multi-server
